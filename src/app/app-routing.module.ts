@@ -27,10 +27,7 @@ const routes: Routes = [
     path: 'sliders',
     loadChildren: () => import('./sliders/sliders.module').then( m => m.SlidersPageModule)
   },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },
+
 ];
 
 @NgModule({

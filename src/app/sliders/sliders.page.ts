@@ -12,4 +12,6 @@ export class SlidersPage implements OnInit {
   ngOnInit() {
   }
 
+  
+  
 }

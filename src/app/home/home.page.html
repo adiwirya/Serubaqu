@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-tabs #tabs>
+    <fiv-app-bar slot="bottom"  #bar>
+      <fiv-fab [fivAppBarFab]="position" #fab>
+        <fiv-icon name="flash"></fiv-icon>
+      </fiv-fab>
+  
+      <fiv-app-bar-tab left tab="rumah">
+        <fiv-icon name="home"></fiv-icon>
+        <ion-label>Rumah</ion-label>
+      </fiv-app-bar-tab>
+      <fiv-app-bar-tab left tab="baju">
+        <fiv-icon name="body"></fiv-icon>
+        <ion-label>Baju</ion-label>
+      </fiv-app-bar-tab>
+      <fiv-app-bar-tab right tab="senjata">
+        <fiv-icon name="hammer"></fiv-icon>
+        <ion-label>Senjata</ion-label>
+      </fiv-app-bar-tab>
+      <fiv-app-bar-tab right tab="profile">
+        <fiv-icon name="person"></fiv-icon>
+        <ion-label>Profile</ion-label>
+      </fiv-app-bar-tab>
+    </fiv-app-bar>
+  </ion-tabs>
 </ion-content>

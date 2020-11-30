@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-
+import { FivAppBarModule, FivCenterModule, FivFabModule, FivIconModule, FivFeatureDiscoveryModule, FivIfModule} from '@fivethree/core';
 import { HomePageRoutingModule } from './home-routing.module';
 
 
@@ -12,7 +12,14 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    FivAppBarModule,
+    FivCenterModule,
+    FivIfModule,
+    FivFabModule,
+    FivIconModule,
+    FivFeatureDiscoveryModule,
+    
   ],
   declarations: [HomePage]
 })

@@ -1,9 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content >
+  <div class="ion-padding ion-margin-top">
+    <ion-row class="ion-padding-top ion-padding-bottom ion-margin-top">
+        <img class="logo" src="assets/images/Logo.png"/>
+    </ion-row>
+    <form [formGroup]="loginform" (ngSubmit)="doLogin()" novalidate>
+    <ion-row>
+        <ion-col class="ion-padding-top ion-padding-bottom ion-margin-top" >
+        <ion-list inset class="no-border">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" [formControl]="loginform.controls['useremail']" required></ion-input>
+            <div *ngIf="loginform.controls['useremail'].dirty && !loginform.controls['useremail'].valid">
+              <p *ngIf="loginform.controls['useremail'].errors.InvalidEmail">Please enter a valid email id</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-label  position="floating">Password</ion-label>
+            <ion-input type="password" [formControl]="loginform.controls['userpass']" required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="login-button ripple-parent" type="submit" [disabled]="!loginform.valid">Login</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer">
+    <ion-button expand="block" fill="clear" expand="full" [routerLink]="['/register']">New User? Register Now</ion-button>
+  </ion-toolbar>
+</ion-footer>
