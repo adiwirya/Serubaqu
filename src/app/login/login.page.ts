@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Validator } from '../helpers/validation.helpers';
 import { ToastService } from '../services/toast.service';
 import { Router } from '@angular/router';
+import { AngularFirestore  } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginPage implements OnInit {
               public loginFormbuilder: FormBuilder,
               private valuechecker: Validator,
               private toastservice: ToastService,
+              private fbstore: AngularFirestore,
               public ngroute: Router) {
     this.loginform = this.loginFormbuilder.group({
       useremail: ['', Validators.required, this.valuechecker.emailCheck],
@@ -31,7 +33,10 @@ export class LoginPage implements OnInit {
     //console.log(this.loginform.get('useremail').value)
     try{
       await this.fbauth.signInWithEmailAndPassword(this.loginform.get('useremail').value, this.loginform.get('userpass').value).then(data => {
-        console.log(data);
+        console.log(data['uid']);
+        let profile;
+        profile = this.fbstore.collection('users').doc(data['uid']).get();
+        console.log(profile);
         this.ngroute.navigate(['home']);
       })
     }catch(error){

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore  } from "@angular/fire/firestore";
 
 
 
@@ -20,15 +21,19 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public fbauth: AngularFireAuth,
+    private fbstore: AngularFirestore,
     public ngroute: Router
   ) {
     const authfbObserver = fbauth.authState.subscribe( user => {
       if (user) {
-        console.log(user)
+        // console.log(user['uid']);
+        let profile;
+        profile = this.fbstore.collection('users').doc(user['uid']).get();
+        console.log(profile);
         this.ngroute.navigate(['home']);
         authfbObserver.unsubscribe();
       } else {
-        console.log(user)
+        // console.log(user['uid']);
         this.ngroute.navigate(['login']);
         authfbObserver.unsubscribe();
       }
@@ -41,8 +46,4 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
-  
-  
-  
 }

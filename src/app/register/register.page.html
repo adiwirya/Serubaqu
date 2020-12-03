@@ -4,30 +4,26 @@
     <ion-row>
         <ion-col class="ion-padding-top ion-padding-bottom ion-margin-top" >
         <ion-list inset class="no-border">
-
-          <!-- <ion-item>
+          <ion-item>
             <ion-label position="floating">Nama Lengkap</ion-label>
-            <ion-input type="text"  required></ion-input>
+            <ion-input type="text" [formControl]="signupform.controls['nama']" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Tanggal Lahir</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" [formControl]="signupform.controls['tgl']" required></ion-datetime>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Email</ion-label>
             <ion-input type="text" [formControl]="signupform.controls['useremail']" required></ion-input>
             <div *ngIf="signupform.controls['useremail'].dirty && !signupform.controls['useremail'].valid">
-              <p *ngIf="signupform.controls['useremail'].errors.InvalidEmail">Please enter a valid email id</p>
-            </div>
-          </ion-item> -->
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="text" [formControl]="signupform.controls['useremail']" required></ion-input>
-            <div *ngIf="signupform.controls['useremail'].dirty && !signupform.controls['useremail'].valid">
-              <p *ngIf="signupform.controls['useremail'].errors.InvalidEmail">Please enter a valid email id</p>
+              <p *ngIf="signupform.controls['useremail'].errors.InvalidEmail">Harap masukkan ID email yang valid</p>
             </div>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Password</ion-label>
+            <ion-label position="floating">Kata Sandi</ion-label>
             <ion-input type="password" [formControl]="signupform.controls['userpass']" required></ion-input>
             <div *ngIf="signupform.controls['userpass'].dirty && !signupform.controls['userpass'].valid">
-              <p *ngIf="signupform.controls['userpass'].errors?.minlength">Password must be min 6 characters</p>
+              <p *ngIf="signupform.controls['userpass'].errors?.minlength">Kata sandi harus minimal 6 karakter</p>
             </div>
           </ion-item>
         </ion-list>
@@ -35,7 +31,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button class="login-button ripple-parent" type="submit" [disabled]="!signupform.valid">Register</ion-button>
+        <ion-button class="login-button ripple-parent" type="submit" [disabled]="!signupform.valid">Daftar</ion-button>
       </ion-col>
     </ion-row>
   </form>
@@ -44,6 +40,6 @@
 
 <ion-footer>
   <ion-toolbar class="footer">
-    <ion-button expand="block" fill="clear" expand="full" [routerLink]="['/login']">Already have an account? Login Here</ion-button>
+    <ion-button expand="block" fill="clear" expand="full" [routerLink]="['/login']">Sudah memiliki akun? Masuk disini</ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -19,7 +19,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     FivFabModule,
     FivIconModule,
     FivFeatureDiscoveryModule,
-    
   ],
   declarations: [HomePage]
 })

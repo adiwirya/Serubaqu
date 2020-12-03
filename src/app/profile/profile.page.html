@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div id="content">
+    <div id="profile-info">
+      <img id="profile-image" src="assets/images/avatar.png">
+      <h3 id="profile-name">Adi</h3>
+      <span id="profile-description">adiwirya777@gmail.com</span>
+      <ion-list no-border>
+        <ion-item lines="full" (click)="doLogout()">
+          <ion-icon name='log-out' slot="start"></ion-icon>
+          <ion-label class="label"> Keluar </ion-label>
+        </ion-item>
+      </ion-list>
+     </div>
+    </div>
 </ion-content>
