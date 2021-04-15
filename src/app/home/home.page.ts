@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public ngroute: Router,private firebaseAuthService: AuthService) { }
   titleMode = 'hide';
   position = 'center';
+
+  async doLogout(){
+    this.firebaseAuthService.signOut()
+    .then(res => {
+      console.log(res);
+      this.ngroute.navigate(['login']);
+    }).catch(error => {
+  console.log(error);
+});
+}
+
 }

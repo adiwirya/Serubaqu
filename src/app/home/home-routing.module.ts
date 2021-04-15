@@ -48,7 +48,7 @@ const routes: Routes = [
         redirectTo: '/home/rumah' ,
         pathMatch: 'full'
       }
-    ]
+    ] 
   },
   {
     path: '',

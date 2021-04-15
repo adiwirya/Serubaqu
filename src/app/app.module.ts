@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -20,7 +20,13 @@ import { Validator } from './helpers/validation.helpers';
 
 import { FivExpandableModule, FivRouterItemModule, FivCollapsableModule } from '@fivethree/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DatePipe} from '@angular/common';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import {IonicGestureConfig} from 'src/ionic-gesture-config';
 
+// Call the element loader after the platform has been bootstrapped
+
+defineCustomElements(window);
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -40,7 +46,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StatusBar,
     SplashScreen,
     Validator,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DatePipe,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig}
   ],
   bootstrap: [AppComponent]
 })

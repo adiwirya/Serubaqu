@@ -1,15 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div id="content">
-    <div id="profile-info">
-      <img id="profile-image" src="assets/images/avatar.png">
-      <h3 id="profile-name">Adi</h3>
-      <span id="profile-description">adiwirya777@gmail.com</span>
-      <ion-list no-border>
-        <ion-item lines="full" (click)="doLogout()">
-          <ion-icon name='log-out' slot="start"></ion-icon>
-          <ion-label class="label"> Keluar </ion-label>
-        </ion-item>
-      </ion-list>
-     </div>
-    </div>
+  <ion-grid class="ion-margin-horizontal" *ngIf="userData">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="7" size-sm="2">
+        <ion-row class="ion-align-items-end ion-justify-content-end">
+          <ion-fab-button color="primary" style="position: absolute; z-index: 1" (click)="presentImageActionSheet()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+          <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+          <ion-img src="assets/images/avatar.png" style="object-fit: contain; width: 100%;" *ngIf="!imageUrl"></ion-img>
+          <img id="profilePicture" src="{{imageUrl}}" class="circle-image" *ngIf="imageUrl" (load)="imageLoaded()">
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-text class="ion-text-center">
+          <h2 class="text-bold ion-no-margin ion-margin-top">
+            <b>{{userData.nama}}</b>
+          </h2>
+          <h4 class="ion-no-margin ion-padding-bottom">
+            <b>{{userData.email}}</b>
+          </h4>
+        </ion-text>
+
+         <ion-row class="ion-justify-content-center">
+            <ion-col size="12">
+              <ion-button color="danger" expand="block" (click)="doLogout()">
+              Logout
+              </ion-button>
+            </ion-col>
+         </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

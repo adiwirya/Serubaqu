@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore  } from "@angular/fire/firestore";
+
 
 @Component({
   selector: 'app-senjata',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SenjataPage implements OnInit {
 
-  constructor() { }
+  private Data : any[] =[];
+  constructor(    private firebaseDB: AngularFirestore,
+    ) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
+    this.Data = [];
+    this.firebaseDB.collection('senjata').valueChanges().subscribe( data => {
+      this.Data = data;
+      console.log(this.Data);
+    })
   }
 
 }

@@ -1,8 +1,8 @@
 <ion-content>
   <ion-tabs #tabs>
-    <fiv-app-bar slot="bottom"  #bar>
-      <fiv-fab [fivAppBarFab]="position" #fab>
-        <fiv-icon name="flash"></fiv-icon>
+    <fiv-app-bar slot="bottom" #bar>
+      <fiv-fab [fivAppBarFab]="position" #fab (click)="doLogout()">
+        <fiv-icon name="log-out"></fiv-icon>
       </fiv-fab>
   
       <fiv-app-bar-tab left tab="rumah">

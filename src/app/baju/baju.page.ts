@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore  } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-baju',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BajuPage implements OnInit {
 
-  constructor() { }
+  private Data : any[] =[];
+  constructor(    private firebaseDB: AngularFirestore,
+    ) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
+    this.Data = [];
+    this.firebaseDB.collection('baju').valueChanges().subscribe( data => {
+      this.Data = data;
+      console.log(this.Data);
+    })
   }
 
 }

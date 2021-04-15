@@ -1,41 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>baju</ion-title>
+    <ion-title>Baju Daerah</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
   <ion-content>
-    <ion-card>
-      <img src="assets/images/keris.png" />
-      <ion-card-content>
-        <ion-card-title>
-          Keris
-        </ion-card-title>
-        <p> Sulawesi Tenggara </p>
-        <b> Literature & Fiction - {{ 5.99 | currency:'USD' }}</b>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img src="assets/images/kujang.png" />
-      <ion-card-content>
-        <ion-card-title>
-          Kujang
-        </ion-card-title>
-        <p> Jawa Barat </p>
-        <b> Literature & Fiction - {{ 5.99 | currency:'USD' }}</b>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img src="assets/images/badik.png" />
-      <ion-card-content>
-        <ion-card-title>
-          Badik
-        </ion-card-title>
-        <p> Sulawesi Barat </p>
-        <b> Literature & Fiction - {{ 5.99 | currency:'USD' }}</b>
-      </ion-card-content>
-    </ion-card>
+    <ion-content>
+      <div class="ion-margin "*ngIf="Data">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="6" size-lg="4" *ngFor="let pageData of Data; let i = index">
+              <ion-card>
+                <img src="{{pageData.imgUrl}}" />
+                <ion-card-content>
+                  <ion-card-title class="title">
+                    Baju <strong>{{pageData.Nama}}</strong>
+                  </ion-card-title>
+                  <ion-card-subtitle class="subtitle"> Daerah Asal : <strong>{{pageData.Daerah}}</strong> </ion-card-subtitle>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-content>
   </ion-content>
-</ion-content>
